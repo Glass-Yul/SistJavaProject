@@ -1,0 +1,65 @@
+create table Admin (
+admin_id number(10) primary key,
+id varchar2(30) unique,
+pwd varchar2(30) unique
+);
+
+create table menu (
+menu_id number(10) primary key,
+category varchar2(30),
+menu_name varchar2(30) UNIQUE,
+menu_price number(20)
+);
+drop table menu;
+commit;
+create table addition (
+addition_id number(10) primary key,
+hot_ice varchar2(10),
+volume varchar2(10),
+milk varchar2(10),
+shot number(5)
+);
+
+create table basket (
+basket_id number(10) primary key,
+quantity number(20)
+);
+commit;
+
+create table orders (
+order_id number(10) primary key,
+pay_info varchar2(30)
+);
+drop table basket;
+drop table orders;
+alter table addition add quantity number(10);
+
+select * from admin;
+select * from orders;
+select * from menu;
+select * from addition;
+delete from menu;
+
+insert into admin (admin_id, id, pwd)
+values (admin_seq.nextval, '123','123');
+
+insert into menu (menu_id, category, menu_name, menu_price)
+values (menu_seq.nextval, '커피','아메리카노','3500');
+insert into menu (menu_id, category, menu_name, menu_price)
+values (menu_seq.nextval, '커피','라떼','4000');
+insert into menu (menu_id, category, menu_name, menu_price)
+values (menu_seq.nextval, '커피','카페모카','4500');
+
+insert into menu (menu_id, category, menu_name, menu_price)
+values (menu_seq.nextval, '논커피','초코라떼','4000');
+insert into menu (menu_id, category, menu_name, menu_price)
+values (menu_seq.nextval, '논커피','녹차라떼','4000');
+
+insert into menu (menu_id, category, menu_name, menu_price)
+values (menu_seq.nextval, '스무디','딸기스무디','5000');
+insert into menu (menu_id, category, menu_name, menu_price)
+values (menu_seq.nextval, '스무디','요거트스무디','5000');
+
+create sequence seq_addition;
+
+select menu_price from menu where menu_name='아메리카노';
